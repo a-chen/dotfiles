@@ -1,0 +1,5 @@
+# runs this function when you change directory
+# - A hides dotfiles
+function chpwd() {
+    ls -ltrh
+}

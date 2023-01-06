@@ -1,0 +1,13 @@
+# overwrites cd function to cd to a directory if the argument is a file
+function cd() {
+    if [ $# -eq 0 ] ; then
+        # no arguments
+        builtin cd
+    elif [ -d $1 ] ; then
+        # argument is a directory
+        builtin cd "$1"
+    else
+        # argument is not a directory
+        builtin cd "$(dirname $1)"
+    fi
+}
