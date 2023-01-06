@@ -109,3 +109,9 @@ export NVM_DIR="$HOME/.nvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# put in bottom of .zshrc
+# define function folder
+fpath=( ~/.zfunctions "${fpath[@]}" )
+# autoload everything
+autoload -Uz $fpath[1]/*(.:t)
+

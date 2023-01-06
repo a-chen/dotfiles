@@ -1,2 +1,1 @@
-cbm="aonemak1@a1make.net"
-pi="pi@192.168.1.148"
+cbm="100.37.138.250"
