@@ -1,6 +1,6 @@
 # Description: Mounts my network drive
 function mount_myDump_network_drive(){
     osascript <<EOF
-mount volume "smb://Andrew@TheDump/home"
+mount volume "smb://Andrew@TheDump/shared"
 EOF
 }
