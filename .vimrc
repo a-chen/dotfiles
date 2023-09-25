@@ -38,7 +38,7 @@ nnoremap ^ <nop>
 nnoremap gV `[v`]
 
 " Leader shortcuts
-let mapleader=","       " leader is comma
+let mapleader=" "       " leader is space
 " jk is escape
 inoremap jk <esc>
 
