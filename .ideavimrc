@@ -7,7 +7,10 @@
 source ~/.vimrc
 
 " Yank/Paste to/from system clipboard
-set clipboard+=unnamedplus
+" for Linux
+"set clipboard+=unnamedplus
+" for Windows/MacOS
+set clipboard=unnamed
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -26,7 +29,6 @@ map Q gq
 Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
-
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
