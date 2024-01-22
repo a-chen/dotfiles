@@ -16,8 +16,10 @@ filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command men
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
+set scrolloff=10        " show a few lines of context around cursor
 
 " Searching
+set smartcase           " default case-insensitive unless capital letters detected
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " turn off search highlight
