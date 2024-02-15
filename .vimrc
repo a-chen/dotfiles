@@ -8,6 +8,9 @@ set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 set autoindent
 
+" for linux
+set clipboard=unnamedplus
+
 " UI Config 
 set number              " show line numbers
 set showcmd             " show command in bottom bar
