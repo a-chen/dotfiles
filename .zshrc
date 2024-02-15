@@ -73,10 +73,8 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-plugins+=(zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
-
 
 # User configuration
 
@@ -104,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lg="lazygit"
+alias xclip='xclip -selection clipboard'
 
 # Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
 source /usr/share/doc/fzf/examples/key-bindings.zsh
