@@ -93,6 +93,11 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Terminal issues with SSH fix, 
+# Detect if the user is using Kitty, and if so, alias the ssh command
+# Solution is to copy over the terminfo for Kitty. Kitty has an ssh kitten to automate exactly this.
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
