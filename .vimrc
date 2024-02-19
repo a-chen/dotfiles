@@ -7,6 +7,7 @@ set tabstop=4           " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 set autoindent
+set relativenumber      " set relative line numbers
 
 " for linux
 set clipboard=unnamedplus
@@ -34,7 +35,9 @@ nnoremap j gj
 nnoremap k gk
 " move to beginning/end of line
 nnoremap B ^
+vnoremap B ^
 nnoremap E $
+vnoremap E $
 
 " $/^ doesn't do anything
 nnoremap $ <nop>
