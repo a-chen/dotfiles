@@ -11,7 +11,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -107,12 +106,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lg="lazygit"
+# xclip copies directly to clipboard register
 alias xclip='xclip -selection clipboard'
+# view images in terminal w/ `icat image.jpg`
+alias icat="kitty +kitten icat"
+
 
 # Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 # Append this line to ~/.zshrc to enable fuzzy auto-completion for Zsh:
 source /usr/share/doc/fzf/examples/completion.zsh
+# source cargo env variables
+. "$HOME/.cargo/env"
 
 # put in bottom of .zshrc
 # define function folder
