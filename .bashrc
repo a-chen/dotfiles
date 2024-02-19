@@ -114,8 +114,6 @@ plugins=(
 #  fi
 
 source "$OSH"/oh-my-bash.sh
-# source cargo env variables
-. "$HOME/.cargo/env"
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
