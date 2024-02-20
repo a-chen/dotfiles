@@ -4,6 +4,9 @@ case $- in
     *) return;;
 esac
 
+# make fzf use rg instead of find
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+
 # Path to your oh-my-bash installation.
 export OSH='/home/andrew/.oh-my-bash'
 
@@ -144,3 +147,4 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 alias lg="lazygit"
+
