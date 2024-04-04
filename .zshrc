@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 # make fzf use rg instead of find
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
@@ -111,10 +111,12 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vi ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
 alias lg="lazygit"
+alias ld="lazydocker"
 # xclip copies directly to clipboard register
 alias xclip='xclip -selection clipboard'
 # view images in terminal w/ `icat image.jpg`
 alias icat="kitty +kitten icat"
+alias bat=batcat
 
 # Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
 source /usr/share/doc/fzf/examples/key-bindings.zsh
@@ -123,7 +125,7 @@ source /usr/share/doc/fzf/examples/completion.zsh
 # source cargo env variables
 . "$HOME/.cargo/env"
 
-# load startup scripts
+# load startup scripts for yadm
 source $HOME/.startup
 
 # put in bottom of .zshrc
