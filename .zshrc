@@ -117,6 +117,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vi ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
 alias lg="lazygit"
+alias ld="lazydocker"
 # xclip copies directly to clipboard register
 alias xclip='xclip -selection clipboard'
 # view images in terminal w/ `icat image.jpg`
@@ -131,7 +132,7 @@ source /usr/share/doc/fzf/examples/completion.zsh
 # source cargo env variables
 . "$HOME/.cargo/env"
 
-# load startup scripts
+# load startup scripts for yadm
 source $HOME/.startup
 
 # put in bottom of .zshrc
