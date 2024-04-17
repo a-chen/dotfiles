@@ -1,13 +1,19 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin
-
-# make fzf use rg instead of find
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+export GOPATH="$HOME/go"
+export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/bin:/usr/local/go/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# make fzf use rg instead of find
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+export FZF_DEFAULT_OPTS="--ansi --multi --preview='
+        if file --mime-type {} | grep -qF image/; then
+            # currently broken due to https://github.com/gokcehan/lf/issues/1099
+            kitty icat --clear --transfer-mode=memory --stdin=no --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 {}
+        else
+            batcat --color always --style numbers --theme TwoDark --line-range :80 {}
+        fi'"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -53,7 +59,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -115,6 +121,8 @@ alias lg="lazygit"
 alias xclip='xclip -selection clipboard'
 # view images in terminal w/ `icat image.jpg`
 alias icat="kitty +kitten icat"
+# bat actually named batcat because name conflict
+alias bat=/usr/bin/batcat
 
 # Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
 source /usr/share/doc/fzf/examples/key-bindings.zsh
