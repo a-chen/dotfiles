@@ -1,3 +1,6 @@
+# welcome
+neofetch
+
 # If you come from bash you might have to change your $PATH.
 export GOPATH="$HOME/go"
 export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/bin:/usr/local/go/bin:$PATH"
