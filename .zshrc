@@ -7,13 +7,10 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # make fzf use rg instead of find
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-export FZF_DEFAULT_OPTS="--ansi --multi --preview='
-        if file --mime-type {} | grep -qF image/; then
-            # currently broken due to https://github.com/gokcehan/lf/issues/1099
-            kitty icat --clear --transfer-mode=memory --stdin=no --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 {}
-        else
-            batcat --color always --style numbers --theme TwoDark --line-range :80 {}
-        fi'"
+export FZF_DEFAULT_OPTS="--ansi --multi --preview='bat --color always --style numbers --theme TwoDark --line-range :80 {}'"
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,11 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Terminal issues with SSH fix, 
-# Detect if the user is using Kitty, and if so, alias the ssh command
-# Solution is to copy over the terminfo for Kitty. Kitty has an ssh kitten to automate exactly this.
-[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
-
+# ALIASES
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -120,15 +113,13 @@ alias lg="lazygit"
 alias ld="lazydocker"
 # xclip copies directly to clipboard register
 alias xclip='xclip -selection clipboard'
-# view images in terminal w/ `icat image.jpg`
-alias icat="kitty +kitten icat"
-# bat actually named batcat because name conflict
-alias bat=/usr/bin/batcat
 
-# Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-# Append this line to ~/.zshrc to enable fuzzy auto-completion for Zsh:
-source /usr/share/doc/fzf/examples/completion.zsh
+# bat actually named batcat because name conflict
+# check if batcat is installed before creating the alias
+if command -v batcat &> /dev/null; then
+    alias bat=/usr/bin/batcat
+fi
+
 # source cargo env variables
 . "$HOME/.cargo/env"
 
