@@ -1,0 +1,6 @@
+import = ["$XDG_CONFIG_HOME/alacritty/themes/gruvbox_dark.toml"]
+
+[font]
+size = 16
+
+

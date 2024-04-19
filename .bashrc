@@ -148,3 +148,4 @@ source "$OSH"/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 alias lg="lazygit"
 
+. "$HOME/.cargo/env"
