@@ -116,6 +116,7 @@ alias lg="lazygit"
 alias ld="lazydocker"
 # xclip copies directly to clipboard register
 alias xclip='xclip -selection clipboard'
+alias python=python3
 
 # bat actually named batcat because name conflict
 # check if batcat is installed before creating the alias

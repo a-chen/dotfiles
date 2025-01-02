@@ -1,5 +1,4 @@
 " inspirations: https://dougblack.io/words/a-good-vimrc.html
-
 syntax enable           " enable syntax processing
 
 set backspace=indent,eol,start
@@ -9,8 +8,12 @@ set expandtab           " tabs are spaces
 set autoindent
 set relativenumber      " set relative line numbers
 
-" for linux
-set clipboard=unnamedplus
+" Cross-platform clipboard support
+if has('mac')
+    set clipboard=unnamed
+elseif has('unix')
+    set clipboard=unnamedplus
+endif
 
 " UI Config 
 set number              " show line numbers
