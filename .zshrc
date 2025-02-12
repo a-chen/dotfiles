@@ -140,6 +140,9 @@ alias ld="lazydocker"
 alias xclip='xclip -selection clipboard'
 alias python=python3
 
+# allows usage of lazygit with yadm
+alias ly="lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git"
+
 # bat actually named batcat because name conflict
 # check if batcat is installed before creating the alias
 if command -v batcat &> /dev/null; then
