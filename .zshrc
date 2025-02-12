@@ -8,12 +8,12 @@ export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/bin:/usr/local/go
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# make fzf use rg instead of find
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-export FZF_DEFAULT_OPTS="--ansi --multi --preview='bat --color always --style numbers --theme TwoDark --line-range :80 {}'"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
 
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
+export EDITOR="nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -88,6 +88,27 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+# fzf use rg instead of find
+# Set the default command for fzf to use ripgrep (rg) to list files.
+# - `rg --files` lists all files (excluding directories).
+# - `--hidden` includes hidden files (those starting with `.`).
+# - `--follow` follows symbolic links.
+# - `--glob '!.git'` excludes the `.git` directory from search results.
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+
+# Set default options for fzf:
+# - `--ansi`: Enables ANSI color codes for colored output.
+# - `--multi`: Allows selecting multiple items at once.
+# - `--preview='bat ... {}'`: Uses `bat` (a syntax-highlighting cat alternative) to preview file contents.
+#   - `--color always`: Ensures bat outputs colored text.
+#   - `--style numbers`: Shows line numbers.
+#   - `--theme TwoDark`: Uses the "TwoDark" theme for syntax highlighting.
+#   - `--line-range :80`: Displays only the first 80 lines of the file for better performance.
+#   - `{}` is replaced by the currently selected file in fzf.
+export FZF_DEFAULT_OPTS="--ansi --multi --preview='bat --color always --style numbers --theme TwoDark --line-range :80 {}'"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -103,6 +124,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+
 # ALIASES
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -110,7 +132,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vi ~/.zshrc"
+alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
 alias lg="lazygit"
 alias ld="lazydocker"
@@ -135,3 +157,4 @@ source $HOME/.startup
 fpath=( ~/.zfunctions "${fpath[@]}" )
 # autoload everything
 autoload -Uz $fpath[1]/*(.:t)
+
