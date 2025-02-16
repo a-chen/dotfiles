@@ -134,6 +134,8 @@ export FZF_DEFAULT_OPTS="--ansi --multi --preview='bat --color always --style nu
 # Example aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
+alias vi="nvim"
+alias vim="nvim"
 alias lg="lazygit"
 alias ld="lazydocker"
 # xclip copies directly to clipboard register
@@ -161,3 +163,16 @@ fpath=( ~/.zfunctions "${fpath[@]}" )
 # autoload everything
 autoload -Uz $fpath[1]/*(.:t)
 
+# yazi - move to current working directory when exiting yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
