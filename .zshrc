@@ -1,5 +1,5 @@
 # welcome
-neofetch
+fastfetch # display system info
 
 # If you come from bash you might have to change your $PATH.
 export GOPATH="$HOME/go"
@@ -82,7 +82,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -142,7 +142,7 @@ alias xclip='xclip -selection clipboard'
 alias python=python3
 
 # allows usage of lazygit with yadm
-alias ly="lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git"
+alias yadmlg="lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git"
 
 # bat actually named batcat because name conflict
 # check if batcat is installed before creating the alias
@@ -176,3 +176,10 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval "$(zoxide init zsh)"
+
+# rbenv initialization
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Added by Antigravity
+export PATH="/Users/andrew/.antigravity/antigravity/bin:$PATH"
