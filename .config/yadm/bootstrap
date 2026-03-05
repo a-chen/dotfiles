@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+AGENTS="$HOME/.dotfiles/agents"
+
+echo "Linking agent rules..."
+
+# Claude Code
+ln -sf "$AGENTS/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+
+# Gemini CLI
+ln -sf "$AGENTS/AGENTS.md" "$HOME/.gemini/GEMINI.md"
+
+echo "Done."
