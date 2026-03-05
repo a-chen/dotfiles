@@ -3,7 +3,7 @@ fastfetch # display system info
 
 # If you come from bash you might have to change your $PATH.
 export GOPATH="$HOME/go"
-export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/bin:/usr/local/go/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.dotfiles/bin:$GOPATH/bin:/usr/local/bin:/usr/local/go/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"

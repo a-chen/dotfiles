@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# init-agents: initialize AI agent rule files in a project directory
+set -euo pipefail
+
+AGENTS="$HOME/.dotfiles/agents/AGENTS.md"
+GITIGNORE=".gitignore"
+
+if [ ! -f "$AGENTS" ]; then
+  echo "Error: $AGENTS not found." >&2
+  exit 1
+fi
+
+add_to_gitignore() {
+  local entry="$1"
+  if [ ! -f "$GITIGNORE" ] || ! grep -qxF "$entry" "$GITIGNORE"; then
+    echo "$entry" >> "$GITIGNORE"
+    echo "  .gitignore <- $entry"
+  fi
+}
+
+# CLAUDE.md — import style so project-specific rules can be added below
+init_claude() {
+  if [ -f "CLAUDE.md" ]; then
+    if head -1 CLAUDE.md | grep -qF "@$AGENTS"; then
+      echo "  CLAUDE.md already initialized, skipping"
+      return
+    fi
+    existing=$(cat CLAUDE.md)
+    printf '@%s\n\n%s\n' "$AGENTS" "$existing" > CLAUDE.md
+    echo "  CLAUDE.md <- prepended import (kept existing content)"
+  else
+    printf '@%s\n\n# Project-specific rules\n' "$AGENTS" > CLAUDE.md
+    echo "  CLAUDE.md <- created with import stub"
+  fi
+  add_to_gitignore "CLAUDE.md"
+}
+
+# AGENTS.md and GEMINI.md — copy global content, append any existing content below
+init_copy() {
+  local file="$1"
+  local global_content
+  global_content=$(cat "$AGENTS")
+
+  if [ -f "$file" ]; then
+    if head -1 "$file" | grep -qxF "$(head -1 "$AGENTS")"; then
+      echo "  $file already initialized, skipping"
+      return
+    fi
+    existing=$(cat "$file")
+    printf '%s\n\n---\n\n## Project-specific\n\n%s\n' "$global_content" "$existing" > "$file"
+    echo "  $file <- merged global + existing content"
+  else
+    printf '%s\n\n# Project-specific rules\n' "$global_content" > "$file"
+    echo "  $file <- created from global"
+  fi
+  add_to_gitignore "$file"
+}
+
+echo "Initializing agent files in $(pwd)..."
+init_claude
+init_copy "AGENTS.md"
+init_copy "GEMINI.md"
+echo "Done."
